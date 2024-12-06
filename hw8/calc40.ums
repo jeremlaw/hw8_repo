@@ -1,0 +1,11 @@
+.section init
+    .temps r6, r7
+    .zero r0
+.section text
+    main:
+        r3 := 77000123
+        push r3 on stack r2
+        goto printd linking r1
+        r3 := 10
+        output r3
+        halt

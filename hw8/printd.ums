@@ -1,0 +1,32 @@
+.section init
+    .temps r6, r7
+    .zero r0
+    r0 := 0
+.section text
+    printd:
+        push r1 on stack r2
+        push r4 on stack r2
+        push r3 on stack r2
+        
+        r3 := m[r0][r2 + 3]
+        r5 := r3 / 10
+        r4 := r3 mod 10
+        r4 := r4 + 48
+       
+
+        if (r5 == 0) goto base_case
+        
+        push r5 on stack r2
+        goto printd linking r1
+        output r4
+        goto finish_printd
+    
+    base_case:
+        output r4
+
+    finish_printd:
+        pop r3 off stack r2
+        pop r4 off stack r2
+        pop r5 off stack r2
+        pop stack r2
+        goto r5
